@@ -1,0 +1,32 @@
+
+.contenedor {
+  max-width: 500px;
+  margin: 60px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input, button {
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+
+button {
+  background: orange;
+  cursor: pointer;
+}
+
+.coche {
+  background: #222;
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
