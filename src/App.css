@@ -30,3 +30,14 @@ button {
   border-radius: 5px;
 }
 
+
+/* BUSCADOR */
+
+input[type="text"] {
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px 0;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
