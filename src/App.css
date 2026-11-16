@@ -1,4 +1,4 @@
-
+/* Contenedor principal de la página */
 .contenedor {
   max-width: 500px;
   margin: 60px auto;
@@ -23,21 +23,39 @@ button {
   cursor: pointer;
 }
 
+
 .coche {
   background: #222;
   padding: 15px;
-  margin-top: 10px;
+  margin: 10px 0;
   border-radius: 5px;
+  text-align: left;
 }
+
+.coche h3 {
+  color: orange;
+  margin-bottom: 10px;
+}
+
+.coche p {
+  margin: 5px 0;
+}
+
 
 
 /* BUSCADOR */
 
-input[type="text"] {
-  padding: 10px;
+
+input[type="text"],
+select {
+  display: block;
   width: 100%;
-  max-width: 400px;
-  margin: 20px 0;
+  padding: 12px;
+  margin: 10px 0;
   border: 1px solid gray;
   border-radius: 5px;
+  background: #222;
+  color: white;
+  box-sizing: border-box;
 }
+
