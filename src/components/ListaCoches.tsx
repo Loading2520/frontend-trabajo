@@ -1,14 +1,7 @@
 
 import { useEffect, useState } from "react";
 import Coche from "./Coche";
-
-interface CocheDatos {
-  _id: string;
-  name: string;
-  marca: string;
-  modelo: string;
-  dorsal?: number;
-}
+import type { CocheDatos } from "./DetalleCoche";
 
 function ListaCoches() {
   const [coches, setCoches] = useState<CocheDatos[]>([]);
@@ -69,13 +62,7 @@ function ListaCoches() {
       <p>Resultados: {cochesFiltrados.length}</p>
 
       {cochesFiltrados.map(coche => (
-        <Coche
-          key={coche._id}
-          name={coche.name}
-          marca={coche.marca}
-          modelo={coche.modelo}
-          dorsal={coche.dorsal}
-        />
+        <Coche key={coche._id} coche={coche} />
       ))}
 
       {!error && coches.length > 0 &&

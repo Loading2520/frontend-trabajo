@@ -59,3 +59,47 @@ select {
   box-sizing: border-box;
 }
 
+
+/* Fondo oscuro del modal */
+.modal-fondo {
+  position: fixed;
+  inset: 0;
+  background: #000a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 15px;
+}
+
+/* Ventana de detalles */
+.modal {
+  background: #222;
+  color: white;
+  padding: 25px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 85vh;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.modal h2,
+.modal h3 {
+  color: orange;
+  margin: 15px 0;
+}
+
+.modal p {
+  margin: 8px 0;
+}
+
+/* Imagen del coche en la ventana de detalles */
+.imagen-coche {
+  width: 100%;
+  max-height: 250px;
+  object-fit: contain;
+  border-radius: 5px;
+  margin: 10px 0;
+}

@@ -1,18 +1,32 @@
-// Datos que recibe el componente mediante props
+
+import { useState } from "react";
+import DetalleCoche from "./DetalleCoche";
+import type { CocheDatos } from "./DetalleCoche";
+
 interface Props {
-  name: string;
-  marca: string;
-  modelo: string;
-  dorsal?: number;
+  coche: CocheDatos;
 }
-// Mostramos la información individual de cada coche
-function Coche({ name, marca, modelo, dorsal }: Props) {
+
+function Coche({ coche }: Props) {
+  // Controlamos si el modal está abierto
+  const [abierto, setAbierto] = useState(false);
+
   return (
     <div className="coche">
-      <h3>{name}</h3>
-      <p>Marca: {marca}</p>
-      <p>Modelo: {modelo}</p>
-      {dorsal !== undefined && <p>Dorsal: {dorsal}</p>}
+      <h3>{coche.name}</h3>
+      <p>Marca: {coche.marca}</p>
+      <p>Modelo: {coche.modelo}</p>
+
+      <button onClick={() => setAbierto(true)}>
+        Ver detalles
+      </button>
+
+      {abierto && (
+        <DetalleCoche
+          coche={coche}
+          cerrar={() => setAbierto(false)}
+        />
+      )}
     </div>
   );
 }
