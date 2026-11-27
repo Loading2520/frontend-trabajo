@@ -65,18 +65,25 @@ function ListaUsuarios() {
   return (
     <div>
       <h2>Listado de usuarios</h2>
+      <p>
+       <Link to="/usuarios/nuevo">Crear usuario</Link>
+      </p>
 
       {error && <p>{error}</p>}
 
       <p>Usuarios mostrados: {usuarios.length}</p>
 
-      {usuarios.map(usuario => (
+        {usuarios.map(usuario => (
         <div className="coche" key={usuario._id}>
-          <h3>{usuario.nombre}</h3>
-          <p>Correo: {usuario.email}</p>
-          <p>Rol: {usuario.rol}</p>
+            <h3>{usuario.nombre}</h3>
+            <p>Correo: {usuario.email}</p>
+            <p>Rol: {usuario.rol}</p>
+
+            <Link to={`/usuarios/${usuario._id}/editar`}>
+            Editar
+            </Link>
         </div>
-      ))}
+        ))}
 
       {!error && usuarios.length === 0 && (
         <p>No hay usuarios registrados.</p>

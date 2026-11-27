@@ -8,6 +8,8 @@ import CrearCoche from "./components/CrearCoche";
 import "./App.css";
 import EditarCoche from "./components/EditarCoche";
 import ListaUsuarios from "./components/ListaUsuarios"; 
+import CrearUsuario from "./components/CrearUsuario";
+import EditarUsuario from "./components/EditarUsuario";
 
 function App() {
   const auth = useContext(AuthContext);
@@ -92,6 +94,26 @@ function App() {
             ) : (
               <Navigate to="/coches" replace />
             )
+          }
+        />
+        {/* Editar usuario */}
+        <Route
+          path="/usuarios/:id/editar"
+          element={
+            auth.usuario?.rol === "admin" ? (
+              <EditarUsuario />
+            ) : (
+              <Navigate to="/coches" replace />
+            )
+          }
+        />
+        {/* Crear usuario */}
+        <Route
+          path="/usuarios/nuevo"
+          element={
+            auth.usuario?.rol === "admin"
+              ? <CrearUsuario />
+              : <Navigate to="/coches" replace />
           }
         />
       </Routes>
