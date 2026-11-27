@@ -1,9 +1,10 @@
 
 import { useContext } from "react";
-import { Routes, Route, Navigate } from "react-router";
+import { Routes, Route, Navigate, Link } from "react-router";
 import { AuthContext } from "./context/AuthContext";
 import Login from "./components/Login";
 import ListaCoches from "./components/ListaCoches";
+import CrearCoche from "./components/CrearCoche";
 import "./App.css";
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
           element={auth.usuario ? <Navigate to="/coches" replace /> : <Login />}
         />
 
-        {/* Ruta privada */}
+        {/* Listado de coches */}
         <Route
           path="/coches"
           element={
@@ -44,10 +45,29 @@ function App() {
                   Cerrar sesión
                 </button>
 
+                {/* Solo administradores */}
+                {auth.usuario.rol === "admin" && (
+                  <p>
+                    <Link to="/coches/nuevo">Crear coche</Link>
+                  </p>
+                )}
+
                 <ListaCoches />
               </>
             ) : (
               <Navigate to="/login" replace />
+            )
+          }
+        />
+
+        {/* Crear coche */}
+        <Route
+          path="/coches/nuevo"
+          element={
+            auth.usuario?.rol === "admin" ? (
+              <CrearCoche />
+            ) : (
+              <Navigate to="/coches" replace />
             )
           }
         />
