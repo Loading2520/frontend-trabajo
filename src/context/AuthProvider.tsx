@@ -7,7 +7,7 @@ import type { Usuario } from "./AuthContext";
 function AuthProvider({ children }: { children: ReactNode }) {
   const [usuario, setUsuario] = useState<Usuario | null>(null);
   const [token, setToken] = useState<string | null>(null);
-  const [comprobando, setComprobando] = useState(true);
+  const [comprobando, setComprobando] = useState(() => !!sessionStorage.getItem("gridline_token"));
 
   // Recuperar la sesión al cargar la aplicación
   useEffect(() => {
@@ -15,7 +15,6 @@ function AuthProvider({ children }: { children: ReactNode }) {
     const controller = new AbortController();
 
     if (!guardado) {
-      setComprobando(false);
       return;
     }
 
