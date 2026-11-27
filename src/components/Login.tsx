@@ -1,12 +1,11 @@
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 import type { FormEvent } from "react";
+import { AuthContext } from "../context/AuthContext";
 
-interface Props {
-  onLogin: () => void;
-}
+function Login() {
+  const auth = useContext(AuthContext);
 
-function Login({ onLogin }: Props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -32,7 +31,13 @@ function Login({ onLogin }: Props) {
         return;
       }
 
-      onLogin();
+      // Guardar usuario y token en el contexto
+      if (!datos.usuario || !datos.token) {
+        setError("Respuesta de login incompleta");
+        return;
+      }
+
+      auth?.iniciarSesion(datos.usuario, datos.token);
 
     } catch {
       setError("Error al conectar con el servidor");
