@@ -10,6 +10,11 @@ function App() {
   const auth = useContext(AuthContext);
 
   if (!auth) return null;
+  
+    // Esperar mientras comprobamos la sesión
+  if (auth.comprobando) {
+    return <p>Comprobando sesión...</p>;
+  }
 
   return (
     <div className="contenedor">

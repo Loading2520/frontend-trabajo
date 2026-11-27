@@ -13,9 +13,9 @@ export interface Usuario {
 interface AuthDatos {
   usuario: Usuario | null;
   token: string | null;
+  comprobando: boolean;
   iniciarSesion: (usuario: Usuario, token: string) => void;
   cerrarSesion: () => void;
 }
 
-// Crear el contexto
 export const AuthContext = createContext<AuthDatos | null>(null);
