@@ -6,6 +6,8 @@ import Login from "./components/Login";
 import ListaCoches from "./components/ListaCoches";
 import CrearCoche from "./components/CrearCoche";
 import "./App.css";
+import EditarCoche from "./components/EditarCoche";
+import ListaUsuarios from "./components/ListaUsuarios"; 
 
 function App() {
   const auth = useContext(AuthContext);
@@ -51,6 +53,11 @@ function App() {
                     <Link to="/coches/nuevo">Crear coche</Link>
                   </p>
                 )}
+                {auth.usuario.rol === "admin" && (
+                  <p>
+                    <Link to="/usuarios">Ver usuarios</Link>
+                  </p>
+                )}
 
                 <ListaCoches />
               </>
@@ -71,9 +78,22 @@ function App() {
             )
           }
         />
-
+        {/* Editar coche */}
+        <Route path="/coches/:id/editar" element={ auth.usuario?.rol === "admin" ? (<EditarCoche /> ) : ( <Navigate to="/coches" replace /> ) }
+        />
         {/* Otras direcciones */}
         <Route path="*" element={<Navigate to="/" replace />} />
+        {/* Listado de usuarios */}
+        <Route
+          path="/usuarios"
+          element={
+            auth.usuario?.rol === "admin" ? (
+              <ListaUsuarios />
+            ) : (
+              <Navigate to="/coches" replace />
+            )
+          }
+        />
       </Routes>
     </div>
   );
